@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDAH & Autismo - Central de Recursos</title>
     <meta name="description" content="Recursos especializados, materiais de apoio e atividades interativas para crianças com TDAH e Autismo">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"></noscript>
     <style>
         * {
             margin: 0;
@@ -419,48 +418,41 @@
             font-weight: 500;
         }
 
-        /* Loading screen - simplified */
+        /* Loading screen - optimized for instant display */
         .loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--clay-bg) 0%, #E8F4F8 50%, #F0F8E8 100%);
+            background: var(--clay-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.3s ease;
         }
 
         .loader-puzzle {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--clay-blue), var(--clay-orange));
+            width: 60px;
+            height: 60px;
+            background: var(--clay-blue);
             border-radius: 15px;
-            animation: loaderSpin 2s ease-in-out infinite;
-            clip-path: polygon(0% 25%, 25% 25%, 25% 0%, 40% 0%, 40% 20%, 60% 20%, 60% 0%, 75% 0%, 75% 25%, 100% 25%, 100% 75%, 75% 75%, 75% 100%, 60% 100%, 60% 80%, 40% 80%, 40% 100%, 25% 100%, 25% 75%, 0% 75%);
-            margin-bottom: 20px;
+            animation: loaderSpin 1s ease-in-out infinite;
+            margin-bottom: 15px;
         }
 
         @keyframes loaderSpin {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
         }
 
         .loader-text {
-            font-family: 'Fredoka', cursive;
-            font-size: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 18px;
             font-weight: 600;
             color: var(--clay-blue);
-            animation: textPulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes textPulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
         }
 
         /* Responsive */
@@ -534,10 +526,10 @@
     </style>
 </head>
 <body>
-    <!-- Optimized Loading Screen -->
+    <!-- Instant Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-puzzle"></div>
-        <div class="loader-text">Carregando recursos mágicos...</div>
+        <div class="loader-text">Carregando...</div>
     </div>
 
     <!-- Optimized Background -->
@@ -609,6 +601,16 @@
                    class="link-item drive" target="_blank" rel="noopener">
                     <span class="link-icon">🛡️</span>
                     Guia Evitando Crises
+                </a>
+                <a href="https://drive.google.com/file/d/1aZYxic5rBy_kOZUKW-z_V4cIRpYYwdr9/view?usp=drive_link" 
+                   class="link-item drive" target="_blank" rel="noopener">
+                    <span class="link-icon">🤝</span>
+                    Estrategias-Coletivas
+                </a>
+                <a href="https://drive.google.com/file/d/19_MYVZFkJ6CxI80P6EepPKw6QYFcCDl7/view?usp=sharing" 
+                   class="link-item drive" target="_blank" rel="noopener">
+                    <span class="link-icon">📊</span>
+                    Quadro-de-Emocoes-da-Semana
                 </a>
             </section>
 
