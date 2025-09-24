@@ -31,7 +31,7 @@
             position: relative;
         }
 
-        /* Optimized floating puzzle pieces */
+        /* Floating background - simplified for mobile */
         .floating-bg {
             position: fixed;
             top: 0;
@@ -77,56 +77,45 @@
             z-index: 1;
         }
 
-        /* Header with claymation style */
+        /* Header - fixed for mobile stability */
         .header {
             text-align: center;
-            margin-bottom: 50px;
-            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 30px;
+            padding: 30px 20px;
+            border-radius: 25px;
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.1),
+                0 15px 35px rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
             border: 3px solid rgba(255, 107, 71, 0.2);
-            animation: headerGlow 6s ease-in-out infinite alternate;
         }
 
-        @keyframes headerGlow {
-            0% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8); }
-            100% { box-shadow: 0 25px 50px rgba(255, 107, 71, 0.2), inset 0 1px 0 rgba(255, 255, 255, 1); }
-        }
-
-        /* Claymation Logo identical to your image */
+        /* Logo - completely redesigned for mobile stability */
         .logo-clay {
-            width: 300px;
-            height: 180px;
-            margin: 0 auto 30px;
+            width: 280px;
+            height: 160px;
+            margin: 0 auto 25px;
             position: relative;
-            transform-style: preserve-3d;
-            animation: logoFloat 8s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) rotateY(0deg); }
-            50% { transform: translateY(-8px) rotateY(2deg); }
+            /* Removed complex 3D transforms that cause mobile issues */
         }
 
         .logo-base {
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, var(--clay-blue) 0%, #3A8BD4 100%);
-            border-radius: 25px;
+            border-radius: 20px;
             position: relative;
-            border: 6px solid var(--clay-orange);
+            border: 4px solid var(--clay-orange);
             box-shadow: 
-                0 15px 30px rgba(0, 0, 0, 0.2),
-                inset 0 3px 6px rgba(255, 255, 255, 0.3),
-                inset 0 -3px 6px rgba(0, 0, 0, 0.1);
-            transform: rotateX(5deg);
+                0 10px 25px rgba(0, 0, 0, 0.15),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+            /* Simplified transform for mobile compatibility */
+            transform: translateZ(0); /* Force hardware acceleration */
         }
 
-        /* Clay text effect identical to your image */
+        /* Text positioning - fixed for mobile */
         .logo-text {
             position: absolute;
             top: 50%;
@@ -135,219 +124,168 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 2px;
+            /* Ensure text stays visible on mobile */
+            z-index: 2;
         }
 
         .text-tdah, .text-autismo {
             font-family: 'Fredoka', cursive;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-shadow: 
-                2px 2px 0px rgba(0, 0, 0, 0.2),
-                4px 4px 8px rgba(0, 0, 0, 0.3);
-            transform: rotateX(-5deg);
+                1px 1px 0px rgba(0, 0, 0, 0.2),
+                2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: var(--clay-yellow);
+            filter: drop-shadow(0 0 8px rgba(255, 213, 79, 0.4));
         }
 
         .text-tdah {
-            font-size: 38px;
-            color: var(--clay-yellow);
-            filter: drop-shadow(0 0 10px rgba(255, 213, 79, 0.5));
+            font-size: clamp(24px, 5vw, 36px);
         }
 
         .text-and {
-            font-size: 24px;
+            font-size: clamp(16px, 3vw, 22px);
             color: var(--clay-yellow);
             font-weight: 600;
-            margin: -5px 0;
+            margin: -2px 0;
         }
 
         .text-autismo {
-            font-size: 32px;
-            color: var(--clay-yellow);
-            filter: drop-shadow(0 0 10px rgba(255, 213, 79, 0.5));
+            font-size: clamp(20px, 4vw, 30px);
         }
 
-        /* 3D Puzzle piece on logo (identical to your image) */
+        /* Simplified puzzle piece - no complex 3D for mobile stability */
         .puzzle-piece-logo {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            transform-style: preserve-3d;
-            animation: puzzleSpin 12s linear infinite;
-        }
-
-        @keyframes puzzleSpin {
-            0% { transform: rotateY(0deg) rotateX(0deg); }
-            100% { transform: rotateY(360deg) rotateX(360deg); }
-        }
-
-        .puzzle-3d {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-        }
-
-        .puzzle-face {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .face-red { 
+            top: 10px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, var(--clay-red), #D32F2F);
-            transform: translateZ(12px);
+            border-radius: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             clip-path: polygon(0% 25%, 25% 25%, 25% 0%, 40% 0%, 40% 20%, 60% 20%, 60% 0%, 75% 0%, 75% 25%, 100% 25%, 100% 75%, 75% 75%, 75% 100%, 60% 100%, 60% 80%, 40% 80%, 40% 100%, 25% 100%, 25% 75%, 0% 75%);
-        }
-        .face-yellow { 
-            background: linear-gradient(135deg, var(--clay-yellow), #FFC107);
-            transform: rotateY(90deg) translateZ(12px);
-        }
-        .face-green { 
-            background: linear-gradient(135deg, var(--clay-green), #4CAF50);
-            transform: rotateY(-90deg) translateZ(12px);
-        }
-        .face-blue { 
-            background: linear-gradient(135deg, var(--clay-blue), #2196F3);
-            transform: rotateX(90deg) translateZ(12px);
-        }
-        .face-orange { 
-            background: linear-gradient(135deg, var(--clay-orange), #FF5722);
-            transform: rotateX(-90deg) translateZ(12px);
-        }
-        .face-back { 
-            background: linear-gradient(135deg, #8E24AA, #6A1B9A);
-            transform: rotateY(180deg) translateZ(12px);
+            /* Simple, mobile-friendly animation */
+            animation: simplePuzzleFloat 8s ease-in-out infinite;
         }
 
-        /* Title and subtitle */
+        @keyframes simplePuzzleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(5deg); }
+        }
+
+        /* Title */
         .title {
             color: var(--clay-blue);
-            font-size: 3em;
+            font-size: clamp(2em, 5vw, 3em);
             font-weight: 700;
             margin-bottom: 15px;
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
-            animation: titlePulse 4s ease-in-out infinite;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
         }
 
         .subtitle {
             color: #555;
-            font-size: 1.3em;
+            font-size: clamp(1em, 3vw, 1.3em);
             font-weight: 500;
             margin-bottom: 20px;
         }
 
-        /* Clay decorations */
+        /* Clay decorations - simplified */
         .clay-decoration {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            margin: 0 15px;
+            width: 35px;
+            height: 35px;
+            margin: 0 12px;
             background: linear-gradient(135deg, var(--clay-orange), var(--clay-red));
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(255, 107, 71, 0.4);
-            animation: decorBounce 3s ease-in-out infinite;
-            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(255, 107, 71, 0.3);
             clip-path: polygon(0% 25%, 25% 25%, 25% 0%, 40% 0%, 40% 20%, 60% 20%, 60% 0%, 75% 0%, 75% 25%, 100% 25%, 100% 75%, 75% 75%, 75% 100%, 60% 100%, 60% 80%, 40% 80%, 40% 100%, 25% 100%, 25% 75%, 0% 75%);
+            animation: decorBounce 4s ease-in-out infinite;
         }
 
-        .clay-decoration:nth-child(odd) { animation-delay: -1.5s; }
+        .clay-decoration:nth-child(odd) { animation-delay: -2s; }
 
         @keyframes decorBounce {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(5deg); }
+            50% { transform: translateY(-5px) rotate(3deg); }
         }
 
-        /* Categories with clay style */
+        /* Categories */
         .categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .category {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 25px;
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.1),
+                0 10px 25px rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            border: 3px solid transparent;
+            border: 2px solid transparent;
             background-clip: padding-box;
             position: relative;
-            transition: all 0.4s ease;
-            animation: categoryFloat 10s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
 
-        .category:nth-child(1) { animation-delay: 0s; border-color: rgba(255, 107, 71, 0.3); }
-        .category:nth-child(2) { animation-delay: -2.5s; border-color: rgba(255, 213, 79, 0.3); }
-        .category:nth-child(3) { animation-delay: -5s; border-color: rgba(102, 187, 106, 0.3); }
-        .category:nth-child(4) { animation-delay: -7.5s; border-color: rgba(74, 158, 223, 0.3); }
-
-        @keyframes categoryFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
+        .category:nth-child(1) { border-color: rgba(255, 107, 71, 0.3); }
+        .category:nth-child(2) { border-color: rgba(255, 213, 79, 0.3); }
+        .category:nth-child(3) { border-color: rgba(102, 187, 106, 0.3); }
+        .category:nth-child(4) { border-color: rgba(74, 158, 223, 0.3); }
 
         .category:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-5px) scale(1.01);
             box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.15),
+                0 20px 35px rgba(0, 0, 0, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
         .category-title {
             color: var(--clay-blue);
-            font-size: 1.5em;
+            font-size: clamp(1.2em, 4vw, 1.5em);
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: center;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--clay-yellow);
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--clay-yellow);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        /* Clay-style links */
+        /* Links */
         .link-item {
             display: block;
             text-decoration: none;
             color: white;
-            padding: 20px 25px;
-            margin-bottom: 15px;
-            border-radius: 18px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            border-radius: 15px;
             font-weight: 500;
-            font-size: 1.1em;
+            font-size: clamp(1em, 3vw, 1.1em);
             box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.2),
-                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+                0 6px 15px rgba(0, 0, 0, 0.2),
+                inset 0 1px 3px rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
         .link-item:hover {
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-2px) scale(1.01);
             box-shadow: 
-                0 12px 30px rgba(0, 0, 0, 0.3),
-                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+                0 8px 20px rgba(0, 0, 0, 0.25),
+                inset 0 1px 3px rgba(255, 255, 255, 0.3);
         }
 
         .link-item:active {
-            transform: translateY(-1px) scale(0.98);
+            transform: translateY(0) scale(0.99);
         }
 
-        /* Different clay colors for links */
+        /* Link colors */
         .link-item.drive {
             background: linear-gradient(135deg, var(--clay-green), #43A047);
         }
@@ -367,58 +305,33 @@
 
         .link-icon {
             display: inline-block;
-            width: 28px;
-            height: 28px;
-            margin-right: 12px;
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
             vertical-align: middle;
-            font-size: 22px;
-            animation: iconFloat 4s ease-in-out infinite;
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-2px); }
-        }
-
-        /* Click effect */
-        .link-item::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
-        }
-
-        .link-item:active::after {
-            width: 200px;
-            height: 200px;
+            font-size: 20px;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: #666;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 25px;
-            margin-top: 40px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border: 3px solid rgba(74, 158, 223, 0.2);
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(74, 158, 223, 0.2);
         }
 
         .footer p {
-            margin-bottom: 10px;
-            font-size: 1.1em;
+            margin-bottom: 8px;
+            font-size: clamp(1em, 3vw, 1.1em);
             font-weight: 500;
         }
 
-        /* Loading screen - optimized for instant display */
+        /* Loading screen */
         .loader {
             position: fixed;
             top: 0;
@@ -435,10 +348,10 @@
         }
 
         .loader-puzzle {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--clay-blue);
-            border-radius: 15px;
+            border-radius: 12px;
             animation: loaderSpin 1s ease-in-out infinite;
             margin-bottom: 15px;
         }
@@ -449,47 +362,48 @@
         }
 
         .loader-text {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 18px;
+            font-family: 'Fredoka', cursive;
+            font-size: 16px;
             font-weight: 600;
             color: var(--clay-blue);
         }
 
-        /* Responsive */
+        /* Mobile specific adjustments */
         @media (max-width: 768px) {
-            .categories {
-                grid-template-columns: 1fr;
-            }
-            
-            .title {
-                font-size: 2.5em;
-            }
-            
-            .logo-clay {
-                width: 250px;
-                height: 150px;
-            }
-
-            .text-tdah {
-                font-size: 32px;
-            }
-
-            .text-autismo {
-                font-size: 26px;
-            }
-        }
-
-        @media (max-width: 480px) {
             .container {
                 padding: 15px;
             }
 
             .header {
-                padding: 25px 20px;
+                padding: 25px 15px;
             }
 
-            .title {
-                font-size: 2em;
+            .categories {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .logo-clay {
+                width: 240px;
+                height: 140px;
+            }
+
+            .puzzle-piece-logo {
+                width: 35px;
+                height: 35px;
+                top: 8px;
+                right: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 10px;
+                margin-bottom: 30px;
             }
 
             .logo-clay {
@@ -497,16 +411,24 @@
                 height: 120px;
             }
 
-            .text-tdah {
-                font-size: 24px;
+            .puzzle-piece-logo {
+                width: 30px;
+                height: 30px;
+                top: 6px;
+                right: 10px;
             }
 
-            .text-autismo {
-                font-size: 20px;
+            .category {
+                padding: 20px 15px;
+            }
+
+            .link-item {
+                padding: 15px 18px;
+                margin-bottom: 10px;
             }
         }
 
-        /* Accessibility */
+        /* Accessibility and reduced motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -515,24 +437,30 @@
         }
 
         .link-item:focus {
-            outline: 3px solid var(--clay-yellow);
+            outline: 2px solid var(--clay-yellow);
             outline-offset: 2px;
         }
 
-        /* Performance optimization */
-        .will-change-transform {
-            will-change: transform;
+        /* Touch optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .link-item:hover {
+                transform: none;
+            }
+            
+            .category:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Instant Loading Screen -->
+    <!-- Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-puzzle"></div>
         <div class="loader-text">Carregando...</div>
     </div>
 
-    <!-- Optimized Background -->
+    <!-- Background -->
     <div class="floating-bg">
         <div class="puzzle-float">
             <div class="puzzle-shape"></div>
@@ -547,24 +475,15 @@
 
     <div class="container">
         <header class="header">
-            <!-- Claymation Logo identical to your image -->
-            <div class="logo-clay will-change-transform">
+            <!-- Fixed Logo -->
+            <div class="logo-clay">
                 <div class="logo-base">
                     <div class="logo-text">
                         <div class="text-tdah">TDAH</div>
                         <div class="text-and">&</div>
                         <div class="text-autismo">AUTISMO</div>
                     </div>
-                </div>
-                <div class="puzzle-piece-logo will-change-transform">
-                    <div class="puzzle-3d">
-                        <div class="puzzle-face face-red"></div>
-                        <div class="puzzle-face face-yellow"></div>
-                        <div class="puzzle-face face-green"></div>
-                        <div class="puzzle-face face-blue"></div>
-                        <div class="puzzle-face face-orange"></div>
-                        <div class="puzzle-face face-back"></div>
-                    </div>
+                    <div class="puzzle-piece-logo"></div>
                 </div>
             </div>
             
@@ -669,7 +588,7 @@
     </div>
 
     <script>
-        // Fast loading with minimal effects
+        // Fast and stable loading
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
@@ -677,69 +596,67 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                     initAnimations();
-                }, 500);
-            }, 800); // Reduced loading time
+                }, 300);
+            }, 600);
         });
 
-        // Initialize optimized animations
+        // Optimized animations
         function initAnimations() {
             const categories = document.querySelectorAll('.category');
             categories.forEach((category, index) => {
                 category.style.opacity = '0';
-                category.style.transform = 'translateY(30px)';
-                category.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                category.style.transform = 'translateY(20px)';
+                category.style.transition = `all 0.5s ease ${index * 0.1}s`;
                 
                 setTimeout(() => {
                     category.style.opacity = '1';
                     category.style.transform = 'translateY(0)';
-                }, index * 100);
+                }, index * 80);
             });
         }
 
-        // Enhanced click effects
+        // Click effects
         document.querySelectorAll('.link-item').forEach(link => {
             link.addEventListener('click', (e) => {
-                // Simple celebration effect
-                createSimpleCelebration(link);
+                createClickEffect(link);
             });
         });
 
-        function createSimpleCelebration(element) {
-            const colors = ['#FFD54F', '#FF6B47', '#66BB6A', '#4A9EDF', '#EF5350'];
+        function createClickEffect(element) {
+            const colors = ['#FFD54F', '#FF6B47', '#66BB6A', '#4A9EDF'];
             const rect = element.getBoundingClientRect();
             
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 6; i++) {
                 const particle = document.createElement('div');
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 
                 particle.style.cssText = `
                     position: fixed;
-                    width: 6px;
-                    height: 6px;
+                    width: 4px;
+                    height: 4px;
                     background: ${color};
                     border-radius: 50%;
                     left: ${rect.left + rect.width / 2}px;
                     top: ${rect.top + rect.height / 2}px;
                     pointer-events: none;
                     z-index: 1000;
-                    animation: simpleBurst 0.8s ease-out forwards;
+                    animation: particleBurst 0.6s ease-out forwards;
                 `;
                 
-                // Random direction
-                const angle = (Math.PI * 2 * i) / 8;
-                const distance = 40 + Math.random() * 30;
+                const angle = (Math.PI * 2 * i) / 6;
+                const distance = 30 + Math.random() * 20;
                 particle.style.setProperty('--x', Math.cos(angle) * distance + 'px');
                 particle.style.setProperty('--y', Math.sin(angle) * distance + 'px');
                 
                 document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 800);
+                setTimeout(() => particle.remove(), 600);
             }
         }
 
-        // Add simple burst animation
+        // Add particle animation
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes simpleBurst {
+            @keyframes particleBurst {
                 0% {
                     transform: translate(0, 0) scale(1);
                     opacity: 1;
@@ -752,67 +669,11 @@
         `;
         document.head.appendChild(style);
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                document.body.classList.add('keyboard-nav');
-            }
-            
-            if (e.key === 'Enter' && document.activeElement.classList.contains('link-item')) {
-                createSimpleCelebration(document.activeElement);
-            }
-        });
-
-        document.addEventListener('mousedown', () => {
-            document.body.classList.remove('keyboard-nav');
-        });
-
-        // Add keyboard navigation styles
-        const keyboardStyle = document.createElement('style');
-        keyboardStyle.textContent = `
-            .keyboard-nav .link-item:focus {
-                outline: 3px solid var(--clay-yellow);
-                outline-offset: 3px;
-                box-shadow: 0 0 0 6px rgba(255, 213, 79, 0.3);
-            }
-        `;
-        document.head.appendChild(keyboardStyle);
-
-        // Performance monitoring
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    } else {
-                        entry.target.style.animationPlayState = 'paused';
-                    }
-                });
-            });
-            
-            document.querySelectorAll('.will-change-transform').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Analytics tracking
-        function trackClick(linkName) {
-            // Replace with your analytics code
-            console.log(`Link clicked: ${linkName}`);
-        }
-
-        document.querySelectorAll('.link-item').forEach(link => {
-            link.addEventListener('click', () => {
-                const linkText = link.textContent.trim();
-                trackClick(linkText);
-            });
-        });
-
-        // Touch optimizations for mobile
+        // Touch optimization for mobile
         if ('ontouchstart' in window) {
             document.querySelectorAll('.link-item').forEach(link => {
                 link.addEventListener('touchstart', () => {
-                    link.style.transform = 'scale(0.95)';
+                    link.style.transform = 'scale(0.98)';
                 }, { passive: true });
                 
                 link.addEventListener('touchend', () => {
@@ -823,16 +684,14 @@
             });
         }
 
-        // Console message
-        console.log(`
-        🎨✨ TDAH & Autismo - Central de Recursos ✨🎨
-        
-        🧩 Logo inspirada em claymation
-        🚀 Otimizada para performance
-        ⚡ Carregamento rápido
-        🎯 Efeitos visuais balanceados
-        💙 Feito com amor para nossos pequenos heróis!
-        `);
+        // Accessibility
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && document.activeElement.classList.contains('link-item')) {
+                createClickEffect(document.activeElement);
+            }
+        });
+
+        console.log('🎨 TDAH & Autismo - Central de Recursos - Mobile Optimized! 📱');
     </script>
 </body>
 </html>
