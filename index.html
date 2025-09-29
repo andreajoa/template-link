@@ -22,6 +22,7 @@
             --clay-yellow: #FFD54F;
             --clay-green: #66BB6A;
             --clay-red: #EF5350;
+            --clay-purple: #AB47BC;
             --clay-bg: #F5F0E8;
         }
 
@@ -239,6 +240,7 @@
         .category:nth-child(2) { border-color: rgba(255, 213, 79, 0.3); }
         .category:nth-child(3) { border-color: rgba(102, 187, 106, 0.3); }
         .category:nth-child(4) { border-color: rgba(74, 158, 223, 0.3); }
+        .category:nth-child(5) { border-color: rgba(171, 71, 188, 0.3); }
 
         .category:hover {
             transform: translateY(-5px) scale(1.01);
@@ -303,6 +305,29 @@
 
         .link-item.english {
             background: linear-gradient(135deg, #8E24AA, #6A1B9A);
+        }
+
+        .link-item.premium {
+            background: linear-gradient(135deg, var(--clay-purple), #9C27B0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-item.premium::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: premiumShine 3s ease-in-out infinite;
+        }
+
+        @keyframes premiumShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(0%) translateY(0%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .link-icon {
@@ -581,6 +606,15 @@
                     Material em Inglês ADHD & AUTISM Download
                 </a>
             </section>
+
+            <section class="category">
+                <h2 class="category-title">⭐ Estratégias Premium</h2>
+                <a href="https://pay.kiwify.com.br/SZHV1bD" 
+                   class="link-item premium" target="_blank" rel="noopener">
+                    <span class="link-icon">🔐</span>
+                    As 5 Estratégias Secretas
+                </a>
+            </section>
         </main>
 
         <footer class="footer">
@@ -625,7 +659,7 @@
         });
 
         function createClickEffect(element) {
-            const colors = ['#FFD54F', '#FF6B47', '#66BB6A', '#4A9EDF'];
+            const colors = ['#FFD54F', '#FF6B47', '#66BB6A', '#4A9EDF', '#AB47BC'];
             const rect = element.getBoundingClientRect();
             
             for (let i = 0; i < 6; i++) {
