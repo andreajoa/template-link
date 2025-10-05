@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDAH & Autismo - Central de Recursos</title>
+    <title>TDAH & Autismo - Hub de Recursos</title>
     <meta name="description" content="Recursos especializados, materiais de apoio e atividades interativas para crianças com TDAH e Autismo">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"></noscript>
-    <!-- Vercel Web Analytics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
     <style>
         * {
@@ -17,717 +17,853 @@
         }
 
         :root {
-            --clay-orange: #FF6B47;
-            --clay-blue: #4A9EDF;
-            --clay-yellow: #FFD54F;
-            --clay-green: #66BB6A;
-            --clay-red: #EF5350;
-            --clay-purple: #AB47BC;
-            --clay-bg: #F5F0E8;
+            /* Cores do espectro autista */
+            --autism-red: #E53935;
+            --autism-orange: #FB8C00;
+            --autism-yellow: #FFD600;
+            --autism-green: #43A047;
+            --autism-blue: #1E88E5;
+            --autism-purple: #8E24AA;
+            --autism-pink: #D81B60;
+            
+            /* Cores neutras suaves */
+            --soft-bg: #F8F9FA;
+            --soft-white: #FFFFFF;
+            --soft-gray: #E0E0E0;
+            --text-primary: #37474F;
+            --text-secondary: #607D8B;
+            
+            /* Gradientes especiais */
+            --gradient-spectrum: linear-gradient(135deg, 
+                var(--autism-red) 0%, 
+                var(--autism-orange) 16.66%, 
+                var(--autism-yellow) 33.33%, 
+                var(--autism-green) 50%, 
+                var(--autism-blue) 66.66%, 
+                var(--autism-purple) 83.33%, 
+                var(--autism-pink) 100%);
+            
+            --gradient-calm: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 50%, #FFF9C4 100%);
         }
 
         body {
-            font-family: 'Fredoka', cursive;
-            background: linear-gradient(135deg, var(--clay-bg) 0%, #E8F4F8 50%, #F0F8E8 100%);
+            font-family: 'Quicksand', sans-serif;
+            background: var(--gradient-calm);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            color: var(--text-primary);
         }
 
-        /* Floating background - simplified for mobile */
-        .floating-bg {
+        /* Background animado com peças de quebra-cabeça */
+        .puzzle-background {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.15;
-        }
-
-        .puzzle-float {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            animation: gentleFloat 20s ease-in-out infinite;
-        }
-
-        .puzzle-float:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
-        .puzzle-float:nth-child(2) { top: 70%; right: 15%; animation-delay: -7s; }
-        .puzzle-float:nth-child(3) { bottom: 20%; left: 20%; animation-delay: -14s; }
-
-        .puzzle-shape {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--clay-blue), var(--clay-green));
-            border-radius: 8px;
-            clip-path: polygon(0% 20%, 20% 20%, 20% 0%, 35% 0%, 35% 25%, 65% 25%, 65% 0%, 80% 0%, 80% 20%, 100% 20%, 100% 80%, 80% 80%, 80% 100%, 65% 100%, 65% 75%, 35% 75%, 35% 100%, 20% 100%, 20% 80%, 0% 80%);
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-15px) rotate(5deg); }
-            66% { transform: translateY(10px) rotate(-3deg); }
+        .puzzle-piece {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.08;
+            animation: floatPuzzle 25s ease-in-out infinite;
         }
 
-        /* Main container */
+        .puzzle-piece svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .puzzle-piece:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .puzzle-piece:nth-child(2) { top: 60%; left: 85%; animation-delay: -5s; }
+        .puzzle-piece:nth-child(3) { top: 80%; left: 15%; animation-delay: -10s; }
+        .puzzle-piece:nth-child(4) { top: 30%; left: 75%; animation-delay: -15s; }
+        .puzzle-piece:nth-child(5) { top: 50%; left: 40%; animation-delay: -20s; }
+
+        @keyframes floatPuzzle {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -30px) rotate(5deg); }
+            50% { transform: translate(-15px, 20px) rotate(-3deg); }
+            75% { transform: translate(25px, 10px) rotate(4deg); }
+        }
+
+        /* Container principal */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px 20px;
             position: relative;
             z-index: 1;
         }
 
-        /* Header - fixed for mobile stability */
+        /* Header redesenhado */
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 30px 20px;
-            border-radius: 25px;
+            margin-bottom: 50px;
+            background: var(--soft-white);
+            padding: 50px 30px;
+            border-radius: 30px;
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            border: 3px solid rgba(255, 107, 71, 0.2);
-        }
-
-        /* Logo - completely redesigned for mobile stability */
-        .logo-clay {
-            width: 280px;
-            height: 160px;
-            margin: 0 auto 25px;
+                0 20px 60px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
             position: relative;
-            /* Removed complex 3D transforms that cause mobile issues */
+            overflow: hidden;
         }
 
-        .logo-base {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--clay-blue) 0%, #3A8BD4 100%);
-            border-radius: 20px;
-            position: relative;
-            border: 4px solid var(--clay-orange);
-            box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.15),
-                inset 0 2px 4px rgba(255, 255, 255, 0.3),
-                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-            /* Simplified transform for mobile compatibility */
-            transform: translateZ(0); /* Force hardware acceleration */
-        }
-
-        /* Text positioning - fixed for mobile */
-        .logo-text {
+        .header::before {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--gradient-spectrum);
+        }
+
+        /* Logo principal */
+        .main-logo {
+            display: inline-flex;
             align-items: center;
-            gap: 2px;
-            /* Ensure text stays visible on mobile */
-            z-index: 2;
-        }
-
-        .text-tdah, .text-autismo {
-            font-family: 'Fredoka', cursive;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-shadow: 
-                1px 1px 0px rgba(0, 0, 0, 0.2),
-                2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: var(--clay-yellow);
-            filter: drop-shadow(0 0 8px rgba(255, 213, 79, 0.4));
-        }
-
-        .text-tdah {
-            font-size: clamp(24px, 5vw, 36px);
-        }
-
-        .text-and {
-            font-size: clamp(16px, 3vw, 22px);
-            color: var(--clay-yellow);
-            font-weight: 600;
-            margin: -2px 0;
-        }
-
-        .text-autismo {
-            font-size: clamp(20px, 4vw, 30px);
-        }
-
-        /* Simplified puzzle piece - no complex 3D for mobile stability */
-        .puzzle-piece-logo {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--clay-red), #D32F2F);
-            border-radius: 6px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            clip-path: polygon(0% 25%, 25% 25%, 25% 0%, 40% 0%, 40% 20%, 60% 20%, 60% 0%, 75% 0%, 75% 25%, 100% 25%, 100% 75%, 75% 75%, 75% 100%, 60% 100%, 60% 80%, 40% 80%, 40% 100%, 25% 100%, 25% 75%, 0% 75%);
-            /* Simple, mobile-friendly animation */
-            animation: simplePuzzleFloat 8s ease-in-out infinite;
-        }
-
-        @keyframes simplePuzzleFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(5deg); }
-        }
-
-        /* Title */
-        .title {
-            color: var(--clay-blue);
-            font-size: clamp(2em, 5vw, 3em);
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .subtitle {
-            color: #555;
-            font-size: clamp(1em, 3vw, 1.3em);
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        /* Clay decorations - simplified */
-        .clay-decoration {
-            display: inline-block;
-            width: 35px;
-            height: 35px;
-            margin: 0 12px;
-            background: linear-gradient(135deg, var(--clay-orange), var(--clay-red));
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(255, 107, 71, 0.3);
-            clip-path: polygon(0% 25%, 25% 25%, 25% 0%, 40% 0%, 40% 20%, 60% 20%, 60% 0%, 75% 0%, 75% 25%, 100% 25%, 100% 75%, 75% 75%, 75% 100%, 60% 100%, 60% 80%, 40% 80%, 40% 100%, 25% 100%, 25% 75%, 0% 75%);
-            animation: decorBounce 4s ease-in-out infinite;
-        }
-
-        .clay-decoration:nth-child(odd) { animation-delay: -2s; }
-
-        @keyframes decorBounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-5px) rotate(3deg); }
-        }
-
-        /* Categories */
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .category {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 25px 40px;
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.1) 0%, rgba(142, 36, 170, 0.1) 100%);
             border-radius: 20px;
-            padding: 25px;
-            box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            border: 2px solid transparent;
+            border: 3px solid transparent;
             background-clip: padding-box;
             position: relative;
-            transition: all 0.3s ease;
         }
 
-        .category:nth-child(1) { border-color: rgba(255, 107, 71, 0.3); }
-        .category:nth-child(2) { border-color: rgba(255, 213, 79, 0.3); }
-        .category:nth-child(3) { border-color: rgba(102, 187, 106, 0.3); }
-        .category:nth-child(4) { border-color: rgba(74, 158, 223, 0.3); }
-        .category:nth-child(5) { border-color: rgba(171, 71, 188, 0.3); }
+        .main-logo::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 20px;
+            padding: 3px;
+            background: var(--gradient-spectrum);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
 
-        .category:hover {
-            transform: translateY(-5px) scale(1.01);
+        .logo-puzzle {
+            width: 70px;
+            height: 70px;
+            position: relative;
+            animation: gentleRotate 8s ease-in-out infinite;
+        }
+
+        @keyframes gentleRotate {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.05); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .logo-text h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            background: var(--gradient-spectrum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .logo-text .ampersand {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--autism-blue);
+            font-weight: 600;
+        }
+
+        .subtitle-main {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.6;
+        }
+
+        .spectrum-bar {
+            height: 6px;
+            width: 200px;
+            margin: 0 auto;
+            background: var(--gradient-spectrum);
+            border-radius: 10px;
+            animation: pulseSpectrum 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseSpectrum {
+            0%, 100% { opacity: 0.8; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.1); }
+        }
+
+        /* Grid de categorias */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .category-card {
+            background: var(--soft-white);
+            border-radius: 25px;
+            padding: 35px 30px;
             box-shadow: 
-                0 20px 35px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
+                0 10px 40px rgba(0, 0, 0, 0.06),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.12),
+                0 0 0 1px rgba(0, 0, 0, 0.03);
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Cores específicas por categoria */
+        .category-card:nth-child(1) {
+            --card-color-1: var(--autism-blue);
+            --card-color-2: var(--autism-purple);
+        }
+        .category-card:nth-child(2) {
+            --card-color-1: var(--autism-yellow);
+            --card-color-2: var(--autism-orange);
+        }
+        .category-card:nth-child(3) {
+            --card-color-1: var(--autism-green);
+            --card-color-2: var(--autism-blue);
+        }
+        .category-card:nth-child(4) {
+            --card-color-1: var(--autism-purple);
+            --card-color-2: var(--autism-pink);
+        }
+        .category-card:nth-child(5) {
+            --card-color-1: var(--autism-orange);
+            --card-color-2: var(--autism-red);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--soft-gray);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--card-color-1), var(--card-color-2));
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .category-title {
-            color: var(--clay-blue);
-            font-size: clamp(1.2em, 4vw, 1.5em);
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-align: center;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--clay-yellow);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            font-family: 'Fredoka', cursive;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            flex: 1;
         }
 
-        /* Links */
-        .link-item {
-            display: block;
-            text-decoration: none;
-            color: white;
+        /* Links redesenhados */
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             padding: 18px 20px;
             margin-bottom: 12px;
             border-radius: 15px;
-            font-weight: 500;
-            font-size: clamp(1em, 3vw, 1.1em);
-            box-shadow: 
-                0 6px 15px rgba(0, 0, 0, 0.2),
-                inset 0 1px 3px rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
-        .link-item:hover {
-            transform: translateY(-2px) scale(1.01);
+        .resource-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .resource-link:hover::before {
+            transform: translateX(100%);
+        }
+
+        .resource-link:hover {
+            transform: translateX(5px) scale(1.02);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .resource-link:active {
+            transform: translateX(5px) scale(0.98);
+        }
+
+        .link-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Cores dos links por tipo */
+        .link-guide {
+            background: linear-gradient(135deg, var(--autism-blue), #1565C0);
+        }
+
+        .link-protocol {
+            background: linear-gradient(135deg, var(--autism-yellow), var(--autism-orange));
+            color: var(--text-primary);
+        }
+
+        .link-activity {
+            background: linear-gradient(135deg, var(--autism-green), #2E7D32);
+        }
+
+        .link-international {
+            background: linear-gradient(135deg, var(--autism-purple), #6A1B9A);
+        }
+
+        .link-premium {
+            background: linear-gradient(135deg, var(--autism-pink), var(--autism-red));
+            position: relative;
+        }
+
+        .link-premium::after {
+            content: '⭐';
+            position: absolute;
+            right: 20px;
+            font-size: 1.2rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+        }
+
+        /* Footer redesenhado */
+        .footer {
+            background: var(--soft-white);
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
             box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.25),
-                inset 0 1px 3px rgba(255, 255, 255, 0.3);
-        }
-
-        .link-item:active {
-            transform: translateY(0) scale(0.99);
-        }
-
-        /* Link colors */
-        .link-item.drive {
-            background: linear-gradient(135deg, var(--clay-green), #43A047);
-        }
-
-        .link-item.activity {
-            background: linear-gradient(135deg, var(--clay-orange), #F4511E);
-        }
-
-        .link-item.protocol {
-            background: linear-gradient(135deg, var(--clay-yellow), #FFA000);
-            color: #333;
-        }
-
-        .link-item.english {
-            background: linear-gradient(135deg, #8E24AA, #6A1B9A);
-        }
-
-        .link-item.premium {
-            background: linear-gradient(135deg, var(--clay-purple), #9C27B0);
+                0 10px 40px rgba(0, 0, 0, 0.06),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
             position: relative;
             overflow: hidden;
         }
 
-        .link-item.premium::before {
+        .footer::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: premiumShine 3s ease-in-out infinite;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-spectrum);
         }
 
-        @keyframes premiumShine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            50% { transform: translateX(0%) translateY(0%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .link-icon {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-            vertical-align: middle;
-            font-size: 20px;
+        .footer-puzzle {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
         }
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: #666;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            margin-top: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(74, 158, 223, 0.2);
+        .footer-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
         }
 
-        .footer p {
-            margin-bottom: 8px;
-            font-size: clamp(1em, 3vw, 1.1em);
+        .footer-subtext {
+            font-size: 1rem;
+            color: var(--text-secondary);
             font-weight: 500;
         }
 
         /* Loading screen */
         .loader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--clay-bg);
+            inset: 0;
+            background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 50%, #FFF9C4 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.5s ease;
         }
 
         .loader-puzzle {
-            width: 50px;
-            height: 50px;
-            background: var(--clay-blue);
-            border-radius: 12px;
-            animation: loaderSpin 1s ease-in-out infinite;
-            margin-bottom: 15px;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            animation: loaderSpin 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
         }
 
         @keyframes loaderSpin {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
         }
 
         .loader-text {
             font-family: 'Fredoka', cursive;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--clay-blue);
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-spectrum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Mobile specific adjustments */
+        /* Responsividade */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 20px 15px;
             }
 
             .header {
-                padding: 25px 15px;
+                padding: 40px 20px;
+                margin-bottom: 40px;
             }
 
-            .categories {
+            .main-logo {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px 25px;
+            }
+
+            .categories-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .logo-clay {
-                width: 240px;
-                height: 140px;
+                gap: 25px;
             }
 
-            .puzzle-piece-logo {
-                width: 35px;
-                height: 35px;
-                top: 8px;
-                right: 12px;
+            .category-card {
+                padding: 30px 25px;
+            }
+
+            .resource-link {
+                padding: 16px 18px;
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-
             .header {
-                padding: 20px 10px;
-                margin-bottom: 30px;
+                padding: 30px 15px;
             }
 
-            .logo-clay {
-                width: 200px;
-                height: 120px;
+            .category-card {
+                padding: 25px 20px;
             }
 
-            .puzzle-piece-logo {
-                width: 30px;
-                height: 30px;
-                top: 6px;
-                right: 10px;
-            }
-
-            .category {
-                padding: 20px 15px;
-            }
-
-            .link-item {
-                padding: 15px 18px;
-                margin-bottom: 10px;
+            .resource-link {
+                padding: 14px 16px;
+                font-size: 0.95rem;
             }
         }
 
-        /* Accessibility and reduced motion */
+        /* Acessibilidade */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
 
-        .link-item:focus {
-            outline: 2px solid var(--clay-yellow);
-            outline-offset: 2px;
-        }
-
-        /* Touch optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .link-item:hover {
-                transform: none;
-            }
-            
-            .category:hover {
-                transform: none;
-            }
+        .resource-link:focus {
+            outline: 3px solid var(--autism-blue);
+            outline-offset: 3px;
         }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loader" id="loader">
-        <div class="loader-puzzle"></div>
-        <div class="loader-text">Carregando...</div>
+        <svg class="loader-puzzle" viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="puzzleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#E53935;stop-opacity:1" />
+                    <stop offset="16.66%" style="stop-color:#FB8C00;stop-opacity:1" />
+                    <stop offset="33.33%" style="stop-color:#FFD600;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#43A047;stop-opacity:1" />
+                    <stop offset="66.66%" style="stop-color:#1E88E5;stop-opacity:1" />
+                    <stop offset="83.33%" style="stop-color:#8E24AA;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#D81B60;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path d="M 20 20 L 20 40 C 20 35 25 30 30 30 C 35 30 40 35 40 40 L 40 60 L 60 60 L 60 40 C 65 40 70 35 70 30 C 70 25 65 20 60 20 L 80 20 L 80 80 L 60 80 L 60 70 C 60 65 55 60 50 60 C 45 60 40 65 40 70 L 40 80 L 20 80 Z" fill="url(#puzzleGradient)" />
+        </svg>
+        <div class="loader-text">Carregando recursos...</div>
     </div>
 
-    <!-- Background -->
-    <div class="floating-bg">
-        <div class="puzzle-float">
-            <div class="puzzle-shape"></div>
+    <!-- Background com peças de quebra-cabeça -->
+    <div class="puzzle-background">
+        <div class="puzzle-piece">
+            <svg viewBox="0 0 100 100">
+                <path d="M 20 20 L 20 40 C 20 35 25 30 30 30 C 35 30 40 35 40 40 L 40 60 L 60 60 L 60 40 C 65 40 70 35 70 30 C 70 25 65 20 60 20 L 80 20 L 80 80 L 60 80 L 60 70 C 60 65 55 60 50 60 C 45 60 40 65 40 70 L 40 80 L 20 80 Z" fill="var(--autism-blue)" />
+            </svg>
         </div>
-        <div class="puzzle-float">
-            <div class="puzzle-shape"></div>
+        <div class="puzzle-piece">
+            <svg viewBox="0 0 100 100">
+                <path d="M 20 20 L 20 40 C 20 35 25 30 30 30 C 35 30 40 35 40 40 L 40 60 L 60 60 L 60 40 C 65 40 70 35 70 30 C 70 25 65 20 60 20 L 80 20 L 80 80 L 60 80 L 60 70 C 60 65 55 60 50 60 C 45 60 40 65 40 70 L 40 80 L 20 80 Z" fill="var(--autism-purple)" />
+            </svg>
         </div>
-        <div class="puzzle-float">
-            <div class="puzzle-shape"></div>
+        <div class="puzzle-piece">
+            <svg viewBox="0 0 100 100">
+                <path d="M 20 20 L 20 40 C 20 35 25 30 30 30 C 35 30 40 35 40 40 L 40 60 L 60 60 L 60 40 C 65 40 70 35 70 30 C 70 25 65 20 60 20 L 80 20 L 80 80 L 60 80 L 60 70 C 60 65 55 60 50 60 C 45 60 40 65 40 70 L 40 80 L 20 80 Z" fill="var(--autism-green)" />
+            </svg>
+        </div>
+        <div class="puzzle-piece">
+            <svg viewBox="0 0 100 100">
+                <path d="M 20 20 L 20 40 C 20 35 25 30 30 30 C 35 30 40 35 40 40 L 40 60 L 60 60 L 60 40 C 65 40 70 35 70 30 C 70 25 65 20 60 20 L 80 20 L 80 80 L 60 80 L 60 70 C 60 65 55 60 50 60 C 45 60 40 65 40 70 L 40 80 L 20 80 Z" fill="var(--autism-orange)" />
+            </svg>
+        </div>
+        <div class="puzzle-piece">
+            <svg viewBox="0 0 100 100">
+                <path d="M 20 20 L 20 40 C 20 35 25 30 30 30 C 35 30 40 35 40 40 L 40 60 L 60 60 L 60 40 C 65 40 70 35 70 30 C 70 25 65 20 60 20 L 80 20 L 80 80 L 60 80 L 60 70 C 60 65 55 60 50 60 C 45 60 40 65 40 70 L 40 80 L 20 80 Z" fill="var(--autism-pink)" />
+            </svg>
         </div>
     </div>
 
     <div class="container">
+        <!-- Header -->
         <header class="header">
-            <!-- Fixed Logo -->
-            <div class="logo-clay">
-                <div class="logo-base">
-                    <div class="logo-text">
-                        <div class="text-tdah">TDAH</div>
-                        <div class="text-and">&</div>
-                        <div class="text-autismo">AUTISMO</div>
-                    </div>
-                    <div class="puzzle-piece-logo"></div>
+            <div class="main-logo">
+                <div class="logo-puzzle">
+                    <svg viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#E53935;stop-opacity:1" />
+                                <stop offset="16.66%" style="stop-color:#FB8C00;stop-opacity:1" />
+                                <stop offset="33.33%" style="stop-color:#FFD600;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#43A047;stop-opacity:1" />
+                                <stop offset="66.66%" style="stop-color:#1E88E5;stop-opacity:1" />
+                                <stop offset="83.33%" style="stop-color:#8E24AA;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#D81B60;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 10 10 L 10 35 C 10 28 16 22 23 22 C 30 22 36 28 36 35 L 36 64 L 64 64 L 64 36 C 71 36 77 30 77 23 C 77 16 71 10 64 10 L 90 10 L 90 90 L 64 90 L 64 77 C 64 70 58 64 51 64 C 44 64 38 70 38 77 L 38 90 L 10 90 Z" fill="url(#logoGradient)" stroke="#fff" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>TDAH <span class="ampersand">&</span> AUTISMO</h1>
                 </div>
             </div>
             
-            <h1 class="title">Central de Recursos</h1>
-            <div class="clay-decoration"></div>
-            <p class="subtitle">Materiais, atividades e guias para apoio especializado</p>
-            <div class="clay-decoration"></div>
+            <p class="subtitle-main">
+                🌈 Hub completo de recursos, materiais de apoio e atividades especializadas para crianças neurodivergentes
+            </p>
+            
+            <div class="spectrum-bar"></div>
         </header>
 
-        <main class="categories">
-            <section class="category">
-                <h2 class="category-title">📚 Guias e Materiais de Apoio</h2>
+        <!-- Grid de categorias -->
+        <main class="categories-grid">
+            <!-- Guias e Materiais -->
+            <section class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">📚</div>
+                    <h2 class="category-title">Guias e Materiais</h2>
+                </div>
+                <a href="https://drive.google.com/file/d/1nkdWZ3nCIk4zkFsr3XolW8chM5QOBHsz/view?usp=drive_link" 
+                   class="resource-link link-guide" target="_blank" rel="noopener">
+                    <span class="link-icon">🧘</span>
+                    <span>Guia Calma</span>
+                </a>
                 <a href="https://drive.google.com/file/d/19_slnxzXZc8GYXzZPXVs4cKu6lUgfs2V/view" 
-                   class="link-item drive" target="_blank" rel="noopener">
+                   class="resource-link link-guide" target="_blank" rel="noopener">
                     <span class="link-icon">📖</span>
-                    Apoio TDAH
+                    <span>Apoio TDAH</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1c_dl51PdK94FeVA_5ng5TPdUExBLUSeU/view" 
-                   class="link-item drive" target="_blank" rel="noopener">
+                   class="resource-link link-guide" target="_blank" rel="noopener">
                     <span class="link-icon">🆘</span>
-                    Guia Crise Infantil
+                    <span>Guia Crise Infantil</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1ApHY6QFgLhFnT-kOe89lHm_c53nTDga9/view" 
-                   class="link-item drive" target="_blank" rel="noopener">
+                   class="resource-link link-guide" target="_blank" rel="noopener">
                     <span class="link-icon">⚖️</span>
-                    Guia Crise Vs Birra
+                    <span>Guia Crise Vs Birra</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1Mo5KknjryiY6-9v3uIK6PDZoEEmQ7JYD/view" 
-                   class="link-item drive" target="_blank" rel="noopener">
+                   class="resource-link link-guide" target="_blank" rel="noopener">
                     <span class="link-icon">📈</span>
-                    Guia Desenvolvimento
+                    <span>Guia Desenvolvimento</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1j9-QkHXMmAl4LfNxjd48Usl652frVAr8/view" 
-                   class="link-item drive" target="_blank" rel="noopener">
+                   class="resource-link link-guide" target="_blank" rel="noopener">
                     <span class="link-icon">🛡️</span>
-                    Guia Evitando Crises
+                    <span>Guia Evitando Crises</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1aZYxic5rBy_kOZUKW-z_V4cIRpYYwdr9/view?usp=drive_link" 
-                   class="link-item drive" target="_blank" rel="noopener">
+                   class="resource-link link-guide" target="_blank" rel="noopener">
                     <span class="link-icon">🤝</span>
-                    Estrategias-Coletivas
+                    <span>Estratégias Coletivas</span>
                 </a>
                 <a href="https://drive.google.com/file/d/19_MYVZFkJ6CxI80P6EepPKw6QYFcCDl7/view?usp=sharing" 
-                   class="link-item drive" target="_blank" rel="noopener">
+                   class="resource-link link-guide" target="_blank" rel="noopener">
                     <span class="link-icon">📊</span>
-                    Quadro-de-Emocoes-da-Semana
+                    <span>Quadro de Emoções da Semana</span>
                 </a>
             </section>
 
-            <section class="category">
-                <h2 class="category-title">🔬 Protocolos Especializados</h2>
+            <!-- Protocolos -->
+            <section class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🔬</div>
+                    <h2 class="category-title">Protocolos Especializados</h2>
+                </div>
                 <a href="https://drive.google.com/file/d/1PnmMoATidxdAffjJd-oM-xdvKZ66LkIl/view" 
-                   class="link-item protocol" target="_blank" rel="noopener">
+                   class="resource-link link-protocol" target="_blank" rel="noopener">
                     <span class="link-icon">💡</span>
-                    Protocolo Luz
+                    <span>Protocolo Luz</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1fjHevluwHJl0cDKRYx43L5a4hGhReroI/view" 
-                   class="link-item protocol" target="_blank" rel="noopener">
+                   class="resource-link link-protocol" target="_blank" rel="noopener">
                     <span class="link-icon">🎓</span>
-                    Protocolo Ensinar
+                    <span>Protocolo Ensinar</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1t6BdS9gbBlKoUv2izkwXnZxBGlcFE6m1/view" 
-                   class="link-item protocol" target="_blank" rel="noopener">
+                   class="resource-link link-protocol" target="_blank" rel="noopener">
                     <span class="link-icon">🌟</span>
-                    Protocolo Esperança
+                    <span>Protocolo Esperança</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1DgDFP-sT-EmE7joxes3hW9KKxuBXsPp1/view" 
-                   class="link-item protocol" target="_blank" rel="noopener">
+                   class="resource-link link-protocol" target="_blank" rel="noopener">
                     <span class="link-icon">🤗</span>
-                    Protocolo Acolher
+                    <span>Protocolo Acolher</span>
                 </a>
             </section>
 
-            <section class="category">
-                <h2 class="category-title">🎮 Atividades Interativas</h2>
+            <!-- Atividades -->
+            <section class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🎮</div>
+                    <h2 class="category-title">Atividades Interativas</h2>
+                </div>
                 <a href="https://atividades-apoio.vercel.app/" 
-                   class="link-item activity" target="_blank" rel="noopener">
+                   class="resource-link link-activity" target="_blank" rel="noopener">
                     <span class="link-icon">🎯</span>
-                    Estimular Atenção Sustentada e Dirigida
+                    <span>Estimular Atenção Sustentada</span>
                 </a>
                 <a href="https://narrative-play-magic.vercel.app/" 
-                   class="link-item activity" target="_blank" rel="noopener">
+                   class="resource-link link-activity" target="_blank" rel="noopener">
                     <span class="link-icon">🎭</span>
-                    Atividade para se Divertir
+                    <span>Atividade para se Divertir</span>
                 </a>
             </section>
 
-            <section class="category">
-                <h2 class="category-title">🌍 Recursos Internacionais</h2>
+            <!-- Recursos Internacionais -->
+            <section class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🌍</div>
+                    <h2 class="category-title">Recursos Internacionais</h2>
+                </div>
                 <a href="https://onlineaa.my.canva.site/neurodivergent-parenting-resources" 
-                   class="link-item english" target="_blank" rel="noopener">
+                   class="resource-link link-international" target="_blank" rel="noopener">
                     <span class="link-icon">🇺🇸</span>
-                    Material em Inglês ADHD & AUTISM Download
+                    <span>Material em Inglês ADHD & Autism</span>
                 </a>
             </section>
 
-            <section class="category">
-                <h2 class="category-title">⭐ Estratégias Premium</h2>
+            <!-- Premium -->
+            <section class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">⭐</div>
+                    <h2 class="category-title">Estratégias Premium</h2>
+                </div>
                 <a href="https://pay.kiwify.com.br/SZHV1bD" 
-                   class="link-item premium" target="_blank" rel="noopener">
+                   class="resource-link link-premium" target="_blank" rel="noopener">
                     <span class="link-icon">🔐</span>
-                    As 5 Estratégias Secretas
+                    <span>As 5 Estratégias Secretas</span>
                 </a>
             </section>
         </main>
 
+        <!-- Footer -->
         <footer class="footer">
-            <p>🧩 Recursos especializados para crianças com TDAH e Autismo</p>
-            <p>Desenvolvido com carinho para famílias e profissionais</p>
+            <div class="footer-content">
+                <svg class="footer-puzzle" viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#E53935;stop-opacity:1" />
+                            <stop offset="16.66%" style="stop-color:#FB8C00;stop-opacity:1" />
+                            <stop offset="33.33%" style="stop-color:#FFD600;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#43A047;stop-opacity:1" />
+                            <stop offset="66.66%" style="stop-color:#1E88E5;stop-opacity:1" />
+                            <stop offset="83.33%" style="stop-color:#8E24AA;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#D81B60;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 10 10 L 10 35 C 10 28 16 22 23 22 C 30 22 36 28 36 35 L 36 64 L 64 64 L 64 36 C 71 36 77 30 77 23 C 77 16 71 10 64 10 L 90 10 L 90 90 L 64 90 L 64 77 C 64 70 58 64 51 64 C 44 64 38 70 38 77 L 38 90 L 10 90 Z" fill="url(#footerGradient)" />
+                </svg>
+                <p class="footer-text">🌈 Recursos especializados para crianças neurodivergentes</p>
+                <p class="footer-subtext">Desenvolvido com amor e compreensão para famílias e profissionais</p>
+                <p class="footer-subtext">💙 Cada criança é única e especial 💜</p>
+            </div>
         </footer>
     </div>
 
     <script>
-        // Fast and stable loading
+        // Loading screen
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
-                    initAnimations();
-                }, 300);
-            }, 600);
+                    animateCards();
+                }, 500);
+            }, 800);
         });
 
-        // Optimized animations
-        function initAnimations() {
-            const categories = document.querySelectorAll('.category');
-            categories.forEach((category, index) => {
-                category.style.opacity = '0';
-                category.style.transform = 'translateY(20px)';
-                category.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        // Animação das cards
+        function animateCards() {
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
                 
                 setTimeout(() => {
-                    category.style.opacity = '1';
-                    category.style.transform = 'translateY(0)';
-                }, index * 80);
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + (index * 100));
             });
         }
 
-        // Click effects
-        document.querySelectorAll('.link-item').forEach(link => {
+        // Efeito de clique nos links
+        document.querySelectorAll('.resource-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                createClickEffect(link);
+                createSparkles(link);
             });
         });
 
-        function createClickEffect(element) {
-            const colors = ['#FFD54F', '#FF6B47', '#66BB6A', '#4A9EDF', '#AB47BC'];
+        function createSparkles(element) {
+            const colors = ['#E53935', '#FB8C00', '#FFD600', '#43A047', '#1E88E5', '#8E24AA', '#D81B60'];
             const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
             
-            for (let i = 0; i < 6; i++) {
-                const particle = document.createElement('div');
-                const color = colors[Math.floor(Math.random() * colors.length)];
+            for (let i = 0; i < 8; i++) {
+                const sparkle = document.createElement('div');
+                const color = colors[i % colors.length];
+                const angle = (Math.PI * 2 * i) / 8;
+                const distance = 40 + Math.random() * 30;
                 
-                particle.style.cssText = `
+                sparkle.style.cssText = `
                     position: fixed;
-                    width: 4px;
-                    height: 4px;
+                    width: 8px;
+                    height: 8px;
                     background: ${color};
                     border-radius: 50%;
-                    left: ${rect.left + rect.width / 2}px;
-                    top: ${rect.top + rect.height / 2}px;
+                    left: ${centerX}px;
+                    top: ${centerY}px;
                     pointer-events: none;
-                    z-index: 1000;
-                    animation: particleBurst 0.6s ease-out forwards;
+                    z-index: 10000;
+                    box-shadow: 0 0 10px ${color};
                 `;
                 
-                const angle = (Math.PI * 2 * i) / 6;
-                const distance = 30 + Math.random() * 20;
-                particle.style.setProperty('--x', Math.cos(angle) * distance + 'px');
-                particle.style.setProperty('--y', Math.sin(angle) * distance + 'px');
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
                 
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 600);
+                document.body.appendChild(sparkle);
+                
+                sparkle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                    { transform: `translate(${dx}px, ${dy}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 700,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                }).onfinish = () => sparkle.remove();
             }
         }
 
-        // Add particle animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes particleBurst {
-                0% {
-                    transform: translate(0, 0) scale(1);
-                    opacity: 1;
-                }
-                100% {
-                    transform: translate(var(--x), var(--y)) scale(0);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Touch optimization for mobile
+        // Touch feedback para mobile
         if ('ontouchstart' in window) {
-            document.querySelectorAll('.link-item').forEach(link => {
-                link.addEventListener('touchstart', () => {
-                    link.style.transform = 'scale(0.98)';
+            document.querySelectorAll('.resource-link').forEach(link => {
+                link.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.96)';
                 }, { passive: true });
                 
-                link.addEventListener('touchend', () => {
+                link.addEventListener('touchend', function() {
                     setTimeout(() => {
-                        link.style.transform = '';
+                        this.style.transform = '';
                     }, 150);
                 }, { passive: true });
             });
         }
 
-        // Accessibility
+        // Acessibilidade de teclado
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && document.activeElement.classList.contains('link-item')) {
-                createClickEffect(document.activeElement);
+            if (e.key === 'Enter' && document.activeElement.classList.contains('resource-link')) {
+                createSparkles(document.activeElement);
             }
         });
 
-        console.log('🎨 TDAH & Autismo - Central de Recursos - Mobile Optimized! 📱');
+        // Log de sucesso
+        console.log('🌈 TDAH & Autismo Hub - Pronto para ajudar! 💙');
+        console.log('✨ Layout otimizado para neurodivergência');
     </script>
 </body>
 </html>
