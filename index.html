@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
     <style>
         * {
             margin: 0;
@@ -17,7 +16,6 @@
         }
 
         :root {
-            /* Cores do espectro autista */
             --autism-red: #E53935;
             --autism-orange: #FB8C00;
             --autism-yellow: #FFD600;
@@ -25,15 +23,11 @@
             --autism-blue: #1E88E5;
             --autism-purple: #8E24AA;
             --autism-pink: #D81B60;
-            
-            /* Cores neutras suaves */
             --soft-bg: #F8F9FA;
             --soft-white: #FFFFFF;
             --soft-gray: #E0E0E0;
             --text-primary: #37474F;
             --text-secondary: #607D8B;
-            
-            /* Gradientes especiais */
             --gradient-spectrum: linear-gradient(135deg, 
                 var(--autism-red) 0%, 
                 var(--autism-orange) 16.66%, 
@@ -42,7 +36,6 @@
                 var(--autism-blue) 66.66%, 
                 var(--autism-purple) 83.33%, 
                 var(--autism-pink) 100%);
-            
             --gradient-calm: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 50%, #FFF9C4 100%);
         }
 
@@ -55,7 +48,6 @@
             color: var(--text-primary);
         }
 
-        /* Background animado com peças de quebra-cabeça */
         .puzzle-background {
             position: fixed;
             top: 0;
@@ -93,7 +85,6 @@
             75% { transform: translate(25px, 10px) rotate(4deg); }
         }
 
-        /* Container principal */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -102,16 +93,13 @@
             z-index: 1;
         }
 
-        /* Header redesenhado */
         .header {
             text-align: center;
             margin-bottom: 50px;
             background: var(--soft-white);
             padding: 50px 30px;
             border-radius: 30px;
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.08),
-                0 0 0 1px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
             position: relative;
             overflow: hidden;
         }
@@ -126,7 +114,6 @@
             background: var(--gradient-spectrum);
         }
 
-        /* Logo principal */
         .main-logo {
             display: inline-flex;
             align-items: center;
@@ -212,7 +199,6 @@
             50% { opacity: 1; transform: scaleX(1.1); }
         }
 
-        /* Grid de categorias */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -224,9 +210,7 @@
             background: var(--soft-white);
             border-radius: 25px;
             padding: 35px 30px;
-            box-shadow: 
-                0 10px 40px rgba(0, 0, 0, 0.06),
-                0 0 0 1px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.02);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
@@ -246,36 +230,19 @@
 
         .category-card:hover {
             transform: translateY(-8px);
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.12),
-                0 0 0 1px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.03);
         }
 
         .category-card:hover::before {
             transform: scaleX(1);
         }
 
-        /* Cores específicas por categoria */
-        .category-card:nth-child(1) {
-            --card-color-1: var(--autism-blue);
-            --card-color-2: var(--autism-purple);
-        }
-        .category-card:nth-child(2) {
-            --card-color-1: var(--autism-yellow);
-            --card-color-2: var(--autism-orange);
-        }
-        .category-card:nth-child(3) {
-            --card-color-1: var(--autism-green);
-            --card-color-2: var(--autism-blue);
-        }
-        .category-card:nth-child(4) {
-            --card-color-1: var(--autism-purple);
-            --card-color-2: var(--autism-pink);
-        }
-        .category-card:nth-child(5) {
-            --card-color-1: var(--autism-orange);
-            --card-color-2: var(--autism-red);
-        }
+        .category-card:nth-child(1) { --card-color-1: var(--autism-blue); --card-color-2: var(--autism-purple); }
+        .category-card:nth-child(2) { --card-color-1: var(--autism-yellow); --card-color-2: var(--autism-orange); }
+        .category-card:nth-child(3) { --card-color-1: var(--autism-green); --card-color-2: var(--autism-blue); }
+        .category-card:nth-child(4) { --card-color-1: var(--autism-purple); --card-color-2: var(--autism-pink); }
+        .category-card:nth-child(5) { --card-color-1: var(--autism-orange); --card-color-2: var(--autism-red); }
+        .category-card:nth-child(6) { --card-color-1: var(--autism-pink); --card-color-2: var(--autism-purple); }
 
         .category-header {
             display: flex;
@@ -306,7 +273,6 @@
             flex: 1;
         }
 
-        /* Links redesenhados */
         .resource-link {
             display: flex;
             align-items: center;
@@ -352,7 +318,6 @@
             text-align: center;
         }
 
-        /* Cores dos links por tipo */
         .link-guide {
             background: linear-gradient(135deg, var(--autism-blue), #1565C0);
         }
@@ -388,15 +353,365 @@
             50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
         }
 
-        /* Footer redesenhado */
+        /* PRODUTOS SENSORIAIS */
+        .products-section {
+            background: var(--soft-white);
+            border-radius: 30px;
+            padding: 50px 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--gradient-spectrum);
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .products-header h2 {
+            font-family: 'Fredoka', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            background: var(--gradient-spectrum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .products-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            border: 2px solid transparent;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: var(--gradient-spectrum);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-emoji {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 15px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .product-card:hover .product-emoji {
+            animation: spin 0.6s ease-in-out;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .product-title {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .product-benefits {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-benefits li {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-benefits li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-spectrum);
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient-spectrum);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Fredoka', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .product-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .product-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* MODAL 3D */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            transform: scale(0.8) rotateX(20deg);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) rotateX(0deg);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-spectrum);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .modal-emoji {
+            font-size: 6rem;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: modalEmojiPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes modalEmojiPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .modal-title {
+            font-family: 'Fredoka', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-spectrum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .modal-benefits {
+            background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .modal-benefits h4 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .modal-benefits ul {
+            list-style: none;
+        }
+
+        .modal-benefits li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .modal-benefits li::before {
+            content: '🌟';
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .modal-link {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--gradient-spectrum);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-family: 'Fredoka', cursive;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .modal-link:hover::before {
+            transform: translateX(100%);
+        }
+
+        .modal-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
         .footer {
             background: var(--soft-white);
             padding: 40px 30px;
             border-radius: 25px;
             text-align: center;
-            box-shadow: 
-                0 10px 40px rgba(0, 0, 0, 0.06),
-                0 0 0 1px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.02);
             position: relative;
             overflow: hidden;
         }
@@ -439,7 +754,6 @@
             font-weight: 500;
         }
 
-        /* Loading screen */
         .loader {
             position: fixed;
             inset: 0;
@@ -474,7 +788,6 @@
             background-clip: text;
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             .container {
                 padding: 20px 15px;
@@ -504,24 +817,24 @@
                 padding: 16px 18px;
                 font-size: 1rem;
             }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .modal-emoji {
+                font-size: 4rem;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
         }
 
-        @media (max-width: 480px) {
-            .header {
-                padding: 30px 15px;
-            }
-
-            .category-card {
-                padding: 25px 20px;
-            }
-
-            .resource-link {
-                padding: 14px 16px;
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Acessibilidade */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -530,7 +843,9 @@
             }
         }
 
-        .resource-link:focus {
+        .resource-link:focus,
+        .product-btn:focus,
+        .modal-link:focus {
             outline: 3px solid var(--autism-blue);
             outline-offset: 3px;
         }
@@ -740,6 +1055,226 @@
             </section>
         </main>
 
+        <!-- SEÇÃO DE PRODUTOS SENSORIAIS -->
+        <section class="products-section">
+            <div class="products-header">
+                <h2>🧸 Brinquedos Sensoriais Recomendados</h2>
+                <p>Produtos cuidadosamente selecionados para ajudar no desenvolvimento, concentração e bem-estar emocional de crianças com TDAH e Autismo</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Produto 1 -->
+                <div class="product-card" onclick="openModal('modal1')">
+                    <div class="product-emoji">🌈</div>
+                    <h3 class="product-title">Pop Tube Colorido</h3>
+                    <p class="product-description">Tubo sensorial que estica, volta e faz sons relaxantes</p>
+                    <ul class="product-benefits">
+                        <li>Alivia ansiedade</li>
+                        <li>Estimula coordenação motora</li>
+                        <li>Sons calmantes</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="product-card" onclick="openModal('modal2')">
+                    <div class="product-emoji">🎵</div>
+                    <h3 class="product-title">Cachimbo com Bolinha</h3>
+                    <p class="product-description">Diversão garantida com controle de sopro e coordenação</p>
+                    <ul class="product-benefits">
+                        <li>Exercita respiração</li>
+                        <li>Desenvolve foco</li>
+                        <li>Lembrancinha divertida</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="product-card" onclick="openModal('modal3')">
+                    <div class="product-emoji">🐸</div>
+                    <h3 class="product-title">Squishy Fidget Toy</h3>
+                    <p class="product-description">Sapo/sereia macio para apertar e relaxar</p>
+                    <ul class="product-benefits">
+                        <li>Reduz estresse</li>
+                        <li>Textura agradável</li>
+                        <li>Portátil e leve</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="product-card" onclick="openModal('modal4')">
+                    <div class="product-emoji">🐛</div>
+                    <h3 class="product-title">Pop It Centópeia</h3>
+                    <p class="product-description">Kit com 10 unidades que esticam e fazem pop</p>
+                    <ul class="product-benefits">
+                        <li>Sensação tátil satisfatória</li>
+                        <li>Melhora concentração</li>
+                        <li>Resistente e durável</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 5 -->
+                <div class="product-card" onclick="openModal('modal5')">
+                    <div class="product-emoji">🧩</div>
+                    <h3 class="product-title">Cubo Rubik Anti-Stress</h3>
+                    <p class="product-description">Perfeito para mãos inquietas e mentes ativas</p>
+                    <ul class="product-benefits">
+                        <li>Desenvolve raciocínio</li>
+                        <li>Ocupa as mãos</li>
+                        <li>Para todas as idades</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 6 -->
+                <div class="product-card" onclick="openModal('modal6')">
+                    <div class="product-emoji">🍎</div>
+                    <h3 class="product-title">Brinquedos Montessori</h3>
+                    <p class="product-description">Frutas coloridas para bebês 6-9 meses</p>
+                    <ul class="product-benefits">
+                        <li>Estimula sentidos</li>
+                        <li>Cores vibrantes</li>
+                        <li>Seguro para mastigar</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 7 -->
+                <div class="product-card" onclick="openModal('modal7')">
+                    <div class="product-emoji">📚</div>
+                    <h3 class="product-title">Busy Board Montessori</h3>
+                    <p class="product-description">Quadro educacional com habilidades de vida</p>
+                    <ul class="product-benefits">
+                        <li>Ensina tarefas diárias</li>
+                        <li>Portátil para viagens</li>
+                        <li>Múltiplas atividades</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 8 -->
+                <div class="product-card" onclick="openModal('modal8')">
+                    <div class="product-emoji">🐉</div>
+                    <h3 class="product-title">Dragão Olhos Saltando</h3>
+                    <p class="product-description">Brinquedo antiestresse divertido e único</p>
+                    <ul class="product-benefits">
+                        <li>Visual hilário</li>
+                        <li>Alivia tensão</li>
+                        <li>Estimula risadas</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+
+                <!-- Produto 9 -->
+                <div class="product-card" onclick="openModal('modal9')">
+                    <div class="product-emoji">🐰</div>
+                    <h3 class="product-title">Coelho Sensorial Tátil</h3>
+                    <p class="product-description">Com cordas, sons e textura para bebês 0-3 anos</p>
+                    <ul class="product-benefits">
+                        <li>Estimula tato</li>
+                        <li>Som interativo</li>
+                        <li>Pode mastigar</li>
+                    </ul>
+                    <button class="product-btn">Ver Detalhes 🔍</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODALS -->
+        <!-- Modal 1 - Pop Tube -->
+        <div class="modal" id="modal1" onclick="closeModalOnBackdrop(event, 'modal1')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal1')">×</button>
+                <div class="modal-emoji">🌈</div>
+                <h3 class="modal-title">Pop Tube Colorido</h3>
+                <p class="modal-description">O Pop Tube é um brinquedo sensorial perfeito para crianças com TDAH e autismo. Ele estica, volta ao formato original e produz sons suaves que ajudam a acalmar e focar.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Reduz ansiedade através do movimento repetitivo</li>
+                        <li>Desenvolve coordenação motora fina</li>
+                        <li>Sons relaxantes que acalmam</li>
+                        <li>Feedback sensorial tátil e auditivo</li>
+                        <li>Portátil - leve para qualquer lugar</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/2LPwHibIq2" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 7 - Busy Board -->
+        <div class="modal" id="modal7" onclick="closeModalOnBackdrop(event, 'modal7')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal7')">×</button>
+                <div class="modal-emoji">📚</div>
+                <h3 class="modal-title">Busy Board Montessori</h3>
+                <p class="modal-description">Quadro educacional interativo com múltiplas atividades que ensinam habilidades de vida cotidiana de forma lúdica e envolvente.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Ensina habilidades práticas do dia a dia</li>
+                        <li>Portátil - perfeito para viagens</li>
+                        <li>Múltiplas atividades mantêm interesse</li>
+                        <li>Desenvolve autonomia</li>
+                        <li>Reduz tempo de tela de forma divertida</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/5VMy3cnh8k" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 8 - Dragão -->
+        <div class="modal" id="modal8" onclick="closeModalOnBackdrop(event, 'modal8')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal8')">×</button>
+                <div class="modal-emoji">🐉</div>
+                <h3 class="modal-title">Dragão Olhos Saltando</h3>
+                <p class="modal-description">Brinquedo antiestresse único e divertido que faz os olhos saltarem quando apertado, garantindo risadas e alívio de tensão.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Visual hilário que estimula risadas</li>
+                        <li>Alivia tensão através do humor</li>
+                        <li>Fortalece músculos das mãos</li>
+                        <li>Melhora o humor instantaneamente</li>
+                        <li>Compartilhe diversão com amigos</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/2g2mgW4muJ" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 9 - Coelho -->
+        <div class="modal" id="modal9" onclick="closeModalOnBackdrop(event, 'modal9')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal9')">×</button>
+                <div class="modal-emoji">🐰</div>
+                <h3 class="modal-title">Coelho Sensorial Tátil</h3>
+                <p class="modal-description">Brinquedo sensorial completo com cordas, texturas variadas e sons interativos, ideal para bebês de 0-3 anos explorarem o mundo.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Estimula desenvolvimento tátil</li>
+                        <li>Som interativo prende atenção</li>
+                        <li>Seguro para mastigar e explorar</li>
+                        <li>Múltiplas texturas para descobrir</li>
+                        <li>Ideal para fase de dentição</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/2B6W5fILMA" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
@@ -779,20 +1314,96 @@
 
         // Animação das cards
         function animateCards() {
-            const cards = document.querySelectorAll('.category-card');
+            const cards = document.querySelectorAll('.category-card, .product-card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
-                card.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
+                card.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
                 
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, 100 + (index * 100));
+                }, 100 + (index * 50));
             });
         }
 
-        // Efeito de clique nos links
+        // Funções de Modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Efeito de partículas ao abrir
+            createModalParticles();
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnBackdrop(event, modalId) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(modalId);
+            }
+        }
+
+        // Fechar modal com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
+        // Efeito de partículas ao abrir modal
+        function createModalParticles() {
+            const colors = ['#E53935', '#FB8C00', '#FFD600', '#43A047', '#1E88E5', '#8E24AA', '#D81B60'];
+            const emojis = ['✨', '🌟', '⭐', '💫', '🎨', '🌈', '💝'];
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                const isEmoji = Math.random() > 0.5;
+                
+                particle.textContent = isEmoji ? emojis[Math.floor(Math.random() * emojis.length)] : '●';
+                
+                particle.style.cssText = `
+                    position: fixed;
+                    ${isEmoji ? 'font-size: 2rem;' : `
+                        width: 10px;
+                        height: 10px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        border-radius: 50%;
+                    `}
+                    left: ${50 + (Math.random() - 0.5) * 20}%;
+                    top: ${50 + (Math.random() - 0.5) * 20}%;
+                    pointer-events: none;
+                    z-index: 99999;
+                    opacity: 1;
+                `;
+                
+                document.body.appendChild(particle);
+                
+                const angle = (Math.PI * 2 * i) / 15;
+                const distance = 200 + Math.random() * 100;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+                
+                particle.animate([
+                    { transform: 'translate(0, 0) scale(1) rotate(0deg)', opacity: 1 },
+                    { transform: `translate(${dx}px, ${dy}px) scale(0) rotate(${360 * (Math.random() > 0.5 ? 1 : -1)}deg)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 500,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                }).onfinish = () => particle.remove();
+            }
+        }
+
+        // Efeito de clique nos links de recursos
         document.querySelectorAll('.resource-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 createSparkles(link);
@@ -841,12 +1452,12 @@
 
         // Touch feedback para mobile
         if ('ontouchstart' in window) {
-            document.querySelectorAll('.resource-link').forEach(link => {
-                link.addEventListener('touchstart', function() {
+            document.querySelectorAll('.resource-link, .product-btn, .product-card').forEach(element => {
+                element.addEventListener('touchstart', function() {
                     this.style.transform = 'scale(0.96)';
                 }, { passive: true });
                 
-                link.addEventListener('touchend', function() {
+                element.addEventListener('touchend', function() {
                     setTimeout(() => {
                         this.style.transform = '';
                     }, 150);
@@ -861,9 +1472,180 @@
             }
         });
 
+        // Animação de scroll suave para produtos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Efeito 3D nos cards de produto ao mover o mouse
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Animação de pulso nos emojis dos produtos
+        setInterval(() => {
+            const emojis = document.querySelectorAll('.product-emoji');
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            randomEmoji.animate([
+                { transform: 'scale(1) rotate(0deg)' },
+                { transform: 'scale(1.3) rotate(10deg)' },
+                { transform: 'scale(1) rotate(0deg)' }
+            ], {
+                duration: 500,
+                easing: 'ease-in-out'
+            });
+        }, 3000);
+
         // Log de sucesso
         console.log('🌈 TDAH & Autismo Hub - Pronto para ajudar! 💙');
         console.log('✨ Layout otimizado para neurodivergência');
+        console.log('🧸 Produtos sensoriais carregados com sucesso!');
     </script>
 </body>
-</html>
+</html>5fgIHMkHQW" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 2 - Cachimbo -->
+        <div class="modal" id="modal2" onclick="closeModalOnBackdrop(event, 'modal2')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal2')">×</button>
+                <div class="modal-emoji">🎵</div>
+                <h3 class="modal-title">Cachimbo com Bolinha</h3>
+                <p class="modal-description">Brinquedo clássico que ajuda no controle da respiração e coordenação, essencial para crianças neurodivergentes desenvolverem habilidades motoras.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Exercita controle respiratório</li>
+                        <li>Melhora concentração e foco</li>
+                        <li>Coordenação olho-boca</li>
+                        <li>Diversão garantida</li>
+                        <li>Ótimo para festas e lembrancinhas</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/8V0Tf8YcjQ" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 3 - Squishy -->
+        <div class="modal" id="modal3" onclick="closeModalOnBackdrop(event, 'modal3')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal3')">×</button>
+                <div class="modal-emoji">🐸</div>
+                <h3 class="modal-title">Squishy Fidget Toy</h3>
+                <p class="modal-description">Brinquedo macio e relaxante em formato de sapo ou sereia. A textura agradável proporciona conforto sensorial imediato, ideal para momentos de ansiedade.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Alivia estresse e ansiedade instantaneamente</li>
+                        <li>Textura macia e reconfortante</li>
+                        <li>Fortalece músculos das mãos</li>
+                        <li>Discreto para usar em qualquer lugar</li>
+                        <li>Retorna sempre ao formato original</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/50QbV4gzKK" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 4 - Centópeia -->
+        <div class="modal" id="modal4" onclick="closeModalOnBackdrop(event, 'modal4')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal4')">×</button>
+                <div class="modal-emoji">🐛</div>
+                <h3 class="modal-title">Pop It Centópeia</h3>
+                <p class="modal-description">Kit com 10 unidades de pop it em formato de centópeia. Estica, solta e faz aquele som satisfatório que acalma e entretém.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Sensação tátil extremamente satisfatória</li>
+                        <li>Melhora foco e concentração</li>
+                        <li>Movimento repetitivo calmante</li>
+                        <li>Material resistente e durável</li>
+                        <li>Silencioso - ideal para escola</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/8ANjE61a0x" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 5 - Cubo Rubik -->
+        <div class="modal" id="modal5" onclick="closeModalOnBackdrop(event, 'modal5')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal5')">×</button>
+                <div class="modal-emoji">🧩</div>
+                <h3 class="modal-title">Cubo Rubik Anti-Stress</h3>
+                <p class="modal-description">Brinquedo clássico que combina desafio cognitivo com alívio de estresse. Perfeito para mãos inquietas e mentes ativas.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Desenvolve raciocínio lógico e espacial</li>
+                        <li>Mantém mãos ocupadas</li>
+                        <li>Aumenta paciência e persistência</li>
+                        <li>Adequado para todas as idades</li>
+                        <li>Sensação tátil agradável ao girar</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/AKSDoK4wKs" class="modal-link" target="_blank" rel="noopener">
+                    Ver na Shopee 🛒
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal 6 - Montessori Frutas -->
+        <div class="modal" id="modal6" onclick="closeModalOnBackdrop(event, 'modal6')">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal6')">×</button>
+                <div class="modal-emoji">🍎</div>
+                <h3 class="modal-title">Brinquedos Montessori Frutas</h3>
+                <p class="modal-description">Conjunto de frutas coloridas e sensoriais desenvolvido especialmente para bebês de 6-9 meses, estimulando todos os sentidos.</p>
+                <div class="modal-benefits">
+                    <h4>✨ Benefícios Terapêuticos</h4>
+                    <ul>
+                        <li>Estimula desenvolvimento sensorial</li>
+                        <li>Cores vibrantes atraem atenção</li>
+                        <li>Seguro para mastigar (dentição)</li>
+                        <li>Desenvolve coordenação motora</li>
+                        <li>Materiais atóxicos e seguros</li>
+                    </ul>
+                </div>
+                <a href="https://s.shopee.com.br/
