@@ -666,8 +666,9 @@
 
         .products-section {
             position: relative;
-            margin: 0 calc(50% - 50vw);
-            padding: 102px max(18px, calc((100vw - var(--max-width)) / 2));
+            margin: 0;
+            padding: 102px clamp(22px, 5vw, 64px);
+            border-radius: var(--radius-lg);
             background:
                 linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent 52%),
                 var(--rose);
